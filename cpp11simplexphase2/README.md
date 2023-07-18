@@ -12,14 +12,15 @@ where A is a m x n matrix, b is a m x 1 vector, c is a n x 1 vector, and x is a 
 This problem can be organized in a table of the form
 
 ```
-c_1  ... c_n  | -z
+x_1  ... x_n  |
 --------------|----
+c_1  ... c_n  | -z
 a_11 ... a_1n | b_1
 ...           | ...
 a_m1 ... a_mn | b_m
 ```
 
-where the first row is the objective function (i.e., costs), the last column is the right hand side, and the rest of the table is the matrix A.
+where  c_1,...,c_n are the coefficients of the objective function (i.e., costs), a_11,...,a_mn are the coefficients of the constraints, and b_1,...,b_m are the right-hand side of the constraints.
 
 The simplex algorithm to solve the problem consists in the next steps:
 
