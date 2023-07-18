@@ -19,8 +19,7 @@ a_11 ... a_1n | b_1
 a_m1 ... a_mn | b_m
 ```
 
-where the first row is the objective function, the first column is the right hand side, and the rest of the table is the matrix A.
-```
+where the first row is the objective function (i.e., costs), the last column is the right hand side, and the rest of the table is the matrix A.
 
 The simplex algorithm to solve the problem consists in the next steps:
 
@@ -30,7 +29,9 @@ The simplex algorithm to solve the problem consists in the next steps:
 
 3. If a_is <= 0 for all i, then the problem is unbounded.
 
-4. If a_is > 0 for some i, we choose i = r such that b_r / a_rs = min(b_i / a_is, a_is > 0) and pivot on a_rs, to then go back to step 1. The coefficients are updated according to:
+4. If a_is > 0 for some i, we choose i = r such that b_r / a_rs = min(b_i / a_is, a_is > 0) and pivot on a_rs, to then go back to step 1.
+
+The coefficients are updated according to:
 
 ```
 a_ij <- a_ij - a_is * a_rj / a_rs for j != s
