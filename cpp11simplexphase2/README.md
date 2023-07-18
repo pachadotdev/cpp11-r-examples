@@ -1,5 +1,7 @@
 # cpp11simplexphase2
 
+See the [blog post](https://pacha.dev/blog/2023/07/18/cpp11-simplex/).
+
 The simplex algorithm is well described in [Introduction to Linear Optimization](http://athenasc.com/linoptbook.html) and there is efficient software to solve this. The goal here is to show how to print the intermediate steps of the algorithm, so that it can be used to practice the simplex algorithm for undergraduate students.
 
 Consider a minimization problem of the form:
