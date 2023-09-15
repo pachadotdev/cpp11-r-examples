@@ -37,7 +37,7 @@ X[, 2] <- mtcars$wt
 
 Y <- matrix(mtcars$mpg, nrow = nrow(mtcars), ncol = 1)
 
-cpp11_naive_ols(X, Y)
+naive_ols(X, Y)
 #>           [,1]
 #> [1,] 37.285126
 #> [2,] -5.344472

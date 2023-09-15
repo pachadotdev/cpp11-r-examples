@@ -44,7 +44,7 @@ X[, 2] <- mtcars$wt
 
 Y <- matrix(mtcars$mpg, nrow = nrow(mtcars), ncol = 1)
 
-cpp11_naive_ols(X, Y)
+naive_ols(X, Y)
 ```
 
 Now let's compare with the `lm()` function from R:
