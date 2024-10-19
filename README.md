@@ -1,4 +1,4 @@
-# Cpp11 + R examples
+# Learning C++ as an R user
 
 Here I show how to achieve some common tasks by integrating R and C++.
 

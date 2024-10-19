@@ -1,0 +1,5 @@
+/.quarto/
+*.o
+*.so
+*.dll
+*.qmd
