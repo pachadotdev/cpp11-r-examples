@@ -2,7 +2,7 @@
 % Please edit documentation in R/ece244-package.R
 \name{mean_cpp}
 \alias{mean_cpp}
-\title{Return the mean of the coordinates of a vector (C++)}
+\title{Return the mean of a vector (C++)}
 \usage{
 mean_cpp(x)
 }
@@ -10,5 +10,5 @@ mean_cpp(x)
 \item{x}{numeric vector}
 }
 \description{
-Return the mean of the coordinates of a vector (C++)
+Return the mean of a vector (C++)
 }

@@ -1,0 +1,96 @@
+# Differences between cpp11 and Rcpp
+
+## Motivation
+
+@vaughan already provides some details. Here I will expand on the differences between `cpp11` and `Rcpp`.
+
+## Read and write
+
+In `cpp11`, when a variable is declared, it is read-only by default. This is different from `Rcpp`, where variables are read-write by default.
+
+This code will not compile in `cpp11`:
+
+```cpp
+[[cpp11::register]] integers square_coordinates_(integers x) {
+  integers out = x;
+  for (int i = 0; i < x.size(); ++i) {
+    out[i] = x[i] * x[i];
+  }
+  return out;
+}
+```
+
+The error message is:
+
+```bash
+code.cpp:515:10: error: lvalue required as left operand of assignment
+  515 |     out[i] = x[i] * x[i];
+```
+
+To fix this, you need to explicitly declare the variable as writable:
+
+```cpp
+[[cpp11::register]] integers square_coordinates_(integers x) {
+  writable::integers out = x;
+  for (int i = 0; i < x.size(); ++i) {
+    out[i] = x[i] * x[i];
+  }
+  return out;
+}
+```
+
+The arguments are also read-only by default in `cpp11`, unless you declare them as writable, as in the following example:
+
+```cpp
+[[cpp11::register]] integers square_coordinates2_(writable::integers x) {
+  for (int i = 0; i < x.size(); ++i) {
+    x[i] = x[i] * x[i];
+  }
+  return x;
+}
+```
+
+## External pointers
+
+In `cpp11`, you can use `external_pointer`. In `Rcpp`, you can use `XPtr` to create external pointers. These have a quite different syntax, and `cpp11` does not provide an `attr` method for external pointers.
+
+For example, the [cpp11tesseract](https://github.com/pachadotdev/cpp11tesseract) package defines:
+
+```cpp
+typedef cpp11::external_pointer<tesseract::TessBaseAPI, tess_finalizer> TessPtr;
+```
+
+Then `TessPtr` is called with:
+
+```cpp
+TessPtr ptr(api);
+return ptr;
+```
+
+As a result, the R equivalent that the OCR C++ function verifies that the engine is such that the following is true:
+
+```r
+stopifnot(inherits(engine, "externalptr"))
+```
+
+The equivalent [tesseract](https://github.com/ropensci/tesseract/) package, that uses `Rcpp`, defines:
+
+```
+typedef Rcpp::XPtr<tesseract::TessBaseAPI, Rcpp::PreserveStorage, tess_finalizer, true> TessPtr;
+```
+
+Then `TessPtr` is called with:
+
+```cpp
+TessPtr ptr(api);
+ptr.attr("class") = Rcpp::CharacterVector::create("tesseract");
+return ptr;
+```
+
+Similarly, the `Rcpp` version checks the engine with:
+
+```r
+stopifnot(inherits(engine, "tesseract"))
+```
+
+## References

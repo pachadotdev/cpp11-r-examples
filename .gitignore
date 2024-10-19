@@ -2,4 +2,4 @@
 *.o
 *.so
 *.dll
-*.qmd
+snippets/01-print-number

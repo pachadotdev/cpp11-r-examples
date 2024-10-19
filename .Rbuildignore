@@ -1,0 +1,13 @@
+.*qmd$
+.*bib$
+.*yml$
+^snippets$
+^docs$
+^cpp11dummyols$
+^cpp11gaussjordan$
+^cpp11omp$
+^cpp11simplexphase2$
+^\.quarto$
+^\.vscode$
+^LICENSE\.md$
+^ece244\.Rproj$

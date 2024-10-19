@@ -18,8 +18,11 @@ book:
     - 05-rolling-functions.qmd
     - 06-statistical-functions-2.qmd
     - 07-rolling-functions-2.qmd
-    - 08-creating-r-packages.qmd
-    
+    - 08-r-packages-expanded.qmd
+    - 09-cpp11-rcpp.qmd
+
+bibliography: references.bib
+
 format:
   html:
     theme: [cosmo]

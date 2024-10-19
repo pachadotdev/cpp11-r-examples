@@ -2,15 +2,13 @@
 % Please edit documentation in R/ece244-package.R
 \name{which_cpp}
 \alias{which_cpp}
-\title{Return the indexes of the elements of a vector that are TRUE (C++)}
+\title{Return the index of the TRUE elements in a vector (C++)}
 \usage{
-which_cpp(x, y)
+which_cpp(x)
 }
 \arguments{
-\item{x}{predicate function}
-
-\item{y}{vector of values}
+\item{x}{vector of values}
 }
 \description{
-Return the indexes of the elements of a vector that are TRUE (C++)
+Return the index of the TRUE elements in a vector (C++)
 }

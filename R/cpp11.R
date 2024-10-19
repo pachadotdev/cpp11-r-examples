@@ -32,8 +32,8 @@ any_cpp_ <- function(x) {
   .Call(`_ece244_any_cpp_`, x)
 }
 
-which_cpp_ <- function(pred, x) {
-  .Call(`_ece244_which_cpp_`, pred, x)
+which_cpp_ <- function(x) {
+  .Call(`_ece244_which_cpp_`, x)
 }
 
 all_cpp_4_ <- function(x) {
@@ -110,4 +110,20 @@ cummin2_cpp_ <- function(x, na_rm) {
 
 cummax2_cpp_ <- function(x, na_rm) {
   .Call(`_ece244_cummax2_cpp_`, x, na_rm)
+}
+
+squared_sum_non_iso_ <- function(inp) {
+  .Call(`_ece244_squared_sum_non_iso_`, inp)
+}
+
+squared_sum_iso_ <- function(inp) {
+  .Call(`_ece244_squared_sum_iso_`, inp)
+}
+
+square_coordinates_ <- function(x) {
+  .Call(`_ece244_square_coordinates_`, x)
+}
+
+square_coordinates2_ <- function(x) {
+  .Call(`_ece244_square_coordinates2_`, x)
 }

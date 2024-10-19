@@ -62,10 +62,10 @@ extern "C" SEXP _ece244_any_cpp_(SEXP x) {
   END_CPP11
 }
 // code.cpp
-doubles which_cpp_(function pred, doubles x);
-extern "C" SEXP _ece244_which_cpp_(SEXP pred, SEXP x) {
+integers which_cpp_(logicals x);
+extern "C" SEXP _ece244_which_cpp_(SEXP x) {
   BEGIN_CPP11
-    return cpp11::as_sexp(which_cpp_(cpp11::as_cpp<cpp11::decay_t<function>>(pred), cpp11::as_cpp<cpp11::decay_t<doubles>>(x)));
+    return cpp11::as_sexp(which_cpp_(cpp11::as_cpp<cpp11::decay_t<logicals>>(x)));
   END_CPP11
 }
 // code.cpp
@@ -201,37 +201,69 @@ extern "C" SEXP _ece244_cummax2_cpp_(SEXP x, SEXP na_rm) {
     return cpp11::as_sexp(cummax2_cpp_(cpp11::as_cpp<cpp11::decay_t<doubles>>(x), cpp11::as_cpp<cpp11::decay_t<bool>>(na_rm)));
   END_CPP11
 }
+// code.cpp
+double squared_sum_non_iso_(integers inp);
+extern "C" SEXP _ece244_squared_sum_non_iso_(SEXP inp) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(squared_sum_non_iso_(cpp11::as_cpp<cpp11::decay_t<integers>>(inp)));
+  END_CPP11
+}
+// code.cpp
+double squared_sum_iso_(integers inp);
+extern "C" SEXP _ece244_squared_sum_iso_(SEXP inp) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(squared_sum_iso_(cpp11::as_cpp<cpp11::decay_t<integers>>(inp)));
+  END_CPP11
+}
+// code.cpp
+integers square_coordinates_(integers x);
+extern "C" SEXP _ece244_square_coordinates_(SEXP x) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(square_coordinates_(cpp11::as_cpp<cpp11::decay_t<integers>>(x)));
+  END_CPP11
+}
+// code.cpp
+integers square_coordinates2_(writable::integers x);
+extern "C" SEXP _ece244_square_coordinates2_(SEXP x) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(square_coordinates2_(cpp11::as_cpp<cpp11::decay_t<writable::integers>>(x)));
+  END_CPP11
+}
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
-    {"_ece244_all_cpp_1_",     (DL_FUNC) &_ece244_all_cpp_1_,     1},
-    {"_ece244_all_cpp_2_",     (DL_FUNC) &_ece244_all_cpp_2_,     1},
-    {"_ece244_all_cpp_3_",     (DL_FUNC) &_ece244_all_cpp_3_,     1},
-    {"_ece244_all_cpp_4_",     (DL_FUNC) &_ece244_all_cpp_4_,     1},
-    {"_ece244_any_cpp_",       (DL_FUNC) &_ece244_any_cpp_,       1},
-    {"_ece244_cummax2_cpp_",   (DL_FUNC) &_ece244_cummax2_cpp_,   2},
-    {"_ece244_cummax_cpp_",    (DL_FUNC) &_ece244_cummax_cpp_,    1},
-    {"_ece244_cummin2_cpp_",   (DL_FUNC) &_ece244_cummin2_cpp_,   2},
-    {"_ece244_cummin_cpp_",    (DL_FUNC) &_ece244_cummin_cpp_,    1},
-    {"_ece244_cumprod2_cpp_",  (DL_FUNC) &_ece244_cumprod2_cpp_,  2},
-    {"_ece244_cumprod_cpp_",   (DL_FUNC) &_ece244_cumprod_cpp_,   1},
-    {"_ece244_cumprod_cpp_2_", (DL_FUNC) &_ece244_cumprod_cpp_2_, 1},
-    {"_ece244_cumsum2_cpp_",   (DL_FUNC) &_ece244_cumsum2_cpp_,   2},
-    {"_ece244_cumsum_cpp_",    (DL_FUNC) &_ece244_cumsum_cpp_,    1},
-    {"_ece244_diff1_cpp_",     (DL_FUNC) &_ece244_diff1_cpp_,     1},
-    {"_ece244_diff_cpp_",      (DL_FUNC) &_ece244_diff_cpp_,      2},
-    {"_ece244_mean2_cpp_",     (DL_FUNC) &_ece244_mean2_cpp_,     2},
-    {"_ece244_mean_cpp_",      (DL_FUNC) &_ece244_mean_cpp_,      1},
-    {"_ece244_one_cpp_",       (DL_FUNC) &_ece244_one_cpp_,       0},
-    {"_ece244_range_cpp_",     (DL_FUNC) &_ece244_range_cpp_,     1},
-    {"_ece244_rmse2_cpp_",     (DL_FUNC) &_ece244_rmse2_cpp_,     3},
-    {"_ece244_rmse_cpp_",      (DL_FUNC) &_ece244_rmse_cpp_,      2},
-    {"_ece244_sign_cpp_",      (DL_FUNC) &_ece244_sign_cpp_,      1},
-    {"_ece244_sum2_cpp_",      (DL_FUNC) &_ece244_sum2_cpp_,      2},
-    {"_ece244_sum_cpp_",       (DL_FUNC) &_ece244_sum_cpp_,       1},
-    {"_ece244_var2_cpp_",      (DL_FUNC) &_ece244_var2_cpp_,      2},
-    {"_ece244_var_cpp_",       (DL_FUNC) &_ece244_var_cpp_,       1},
-    {"_ece244_which_cpp_",     (DL_FUNC) &_ece244_which_cpp_,     2},
+    {"_ece244_all_cpp_1_",           (DL_FUNC) &_ece244_all_cpp_1_,           1},
+    {"_ece244_all_cpp_2_",           (DL_FUNC) &_ece244_all_cpp_2_,           1},
+    {"_ece244_all_cpp_3_",           (DL_FUNC) &_ece244_all_cpp_3_,           1},
+    {"_ece244_all_cpp_4_",           (DL_FUNC) &_ece244_all_cpp_4_,           1},
+    {"_ece244_any_cpp_",             (DL_FUNC) &_ece244_any_cpp_,             1},
+    {"_ece244_cummax2_cpp_",         (DL_FUNC) &_ece244_cummax2_cpp_,         2},
+    {"_ece244_cummax_cpp_",          (DL_FUNC) &_ece244_cummax_cpp_,          1},
+    {"_ece244_cummin2_cpp_",         (DL_FUNC) &_ece244_cummin2_cpp_,         2},
+    {"_ece244_cummin_cpp_",          (DL_FUNC) &_ece244_cummin_cpp_,          1},
+    {"_ece244_cumprod2_cpp_",        (DL_FUNC) &_ece244_cumprod2_cpp_,        2},
+    {"_ece244_cumprod_cpp_",         (DL_FUNC) &_ece244_cumprod_cpp_,         1},
+    {"_ece244_cumprod_cpp_2_",       (DL_FUNC) &_ece244_cumprod_cpp_2_,       1},
+    {"_ece244_cumsum2_cpp_",         (DL_FUNC) &_ece244_cumsum2_cpp_,         2},
+    {"_ece244_cumsum_cpp_",          (DL_FUNC) &_ece244_cumsum_cpp_,          1},
+    {"_ece244_diff1_cpp_",           (DL_FUNC) &_ece244_diff1_cpp_,           1},
+    {"_ece244_diff_cpp_",            (DL_FUNC) &_ece244_diff_cpp_,            2},
+    {"_ece244_mean2_cpp_",           (DL_FUNC) &_ece244_mean2_cpp_,           2},
+    {"_ece244_mean_cpp_",            (DL_FUNC) &_ece244_mean_cpp_,            1},
+    {"_ece244_one_cpp_",             (DL_FUNC) &_ece244_one_cpp_,             0},
+    {"_ece244_range_cpp_",           (DL_FUNC) &_ece244_range_cpp_,           1},
+    {"_ece244_rmse2_cpp_",           (DL_FUNC) &_ece244_rmse2_cpp_,           3},
+    {"_ece244_rmse_cpp_",            (DL_FUNC) &_ece244_rmse_cpp_,            2},
+    {"_ece244_sign_cpp_",            (DL_FUNC) &_ece244_sign_cpp_,            1},
+    {"_ece244_square_coordinates2_", (DL_FUNC) &_ece244_square_coordinates2_, 1},
+    {"_ece244_square_coordinates_",  (DL_FUNC) &_ece244_square_coordinates_,  1},
+    {"_ece244_squared_sum_iso_",     (DL_FUNC) &_ece244_squared_sum_iso_,     1},
+    {"_ece244_squared_sum_non_iso_", (DL_FUNC) &_ece244_squared_sum_non_iso_, 1},
+    {"_ece244_sum2_cpp_",            (DL_FUNC) &_ece244_sum2_cpp_,            2},
+    {"_ece244_sum_cpp_",             (DL_FUNC) &_ece244_sum_cpp_,             1},
+    {"_ece244_var2_cpp_",            (DL_FUNC) &_ece244_var2_cpp_,            2},
+    {"_ece244_var_cpp_",             (DL_FUNC) &_ece244_var_cpp_,             1},
+    {"_ece244_which_cpp_",           (DL_FUNC) &_ece244_which_cpp_,           1},
     {NULL, NULL, 0}
 };
 }

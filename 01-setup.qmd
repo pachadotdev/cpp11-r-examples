@@ -1,0 +1,67 @@
+
+# Setup
+
+## C++ Setup
+
+To install the required packages for C++ development, I ran the following command:
+
+```bash
+sudo apt install build-essential g++-11
+```
+
+I attempted to compile a simple example to print a number:
+
+```cpp
+// save this as snippets/01-print-number.cpp
+
+#include <iostream> // required for the cout function
+
+// function to print a message
+int main() {
+    std::cout << 1 << std::endl;
+    return 0;
+}
+```
+
+When I tried to compile it with the following bash instruction:
+
+```bash
+g++ snippets/01-print-number.cpp -o snippets/01-print-number
+```
+
+I encountered the following error:
+
+```bash
+fatal error: 'cstdio' file not found
+fatal error: 'vector' file not found
+cannot find -lc++abi: No such file or directory
+```
+
+To resolve this issue, I installed additional packages:
+
+```bash
+sudo apt install g++-11 libc++-11-dev libc++abi-11-dev
+```
+
+After this, I was able to successfully compile and run the program from bash:
+
+```bash
+g++ snippets/01-print-number.cpp -o snippets/01-print-number
+./snippets/01-print-number # prints "1"
+```
+
+## R Setup
+
+I installed the R packages `bench`, `cpp11`, `devtools` and `usethis` with the following command:
+
+```r
+install.packages(c("bench", "cpp11", "devtools", "usethis"))
+```
+
+To verify that R can compile C++ code, I ran `pkgbuild::check_build_tools(debug = TRUE)`, which returned the following output:
+
+```r
+Trying to compile a simple C file
+Running /usr/lib/R/bin/R CMD SHLIB foo.c
+using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+```

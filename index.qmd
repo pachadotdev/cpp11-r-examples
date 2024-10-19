@@ -1,0 +1,46 @@
+## Motivation
+
+This is a collection of how I solved different C++ errors. Some of this required
+to check multiple sources and spend hours looking for online resources.
+
+In particular, these notes follow the clas ECE244 (Programming Fundamentals) at
+the University of Toronto taught by Professor Salma Emara.
+
+## Honest Disclaimer
+
+These notes are a summary of what worked after hours of fails for my future
+self. I hope it helps you too.
+
+I am a Statistician and Political Scientist, **not** a Computer Scientist!
+
+## Rationale
+
+These notes use the `cpp11` package [@cpp11]. This package is a modern C++ interface for
+R. It is a header-only library that allows you to write C++ code in R packages. All
+the examples in these notes use the `cpp11` package.
+
+`Rcpp` is another popular package for writing C++ code in R [@rcpp]. However, I will
+only cover some differences in the syntax between the two packages by the end of the
+notes.
+
+## Organization
+
+Chapter 1 is about how to compile and run a C++ and how to test if R detects the
+compiler.
+
+Chapters 2 to 7 provide different examples of C++ functions. These are organized
+into an R package, `ece244`, that also contains equivalent R functions for
+comparison. The goal of these chapters is to show the different syntax, compare
+the performance of the two languages, and show how to use C++ in R packages.
+
+The `ece244` package can be installed from GitHub with:
+
+```r
+remotes::install_github("pachadotdev/cpp11-r-examples", subdir = "ece244")
+```
+
+Chapter 8 is about how tocreate R packages that use C++ code.
+
+Chapter 9 covers some differences between `cpp` and `Rcpp`.
+
+## References

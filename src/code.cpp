@@ -1,6 +1,7 @@
 #include "cpp11.hpp"
+#include <numeric>
+
 using namespace cpp11;
-namespace writable = cpp11::writable;
 
 [[cpp11::register]] int one_cpp_() { return 1; }
 
@@ -60,11 +61,11 @@ namespace writable = cpp11::writable;
 
 [[cpp11::register]] double rmse_cpp_(doubles x, double x0) {
   int n = x.size();
-  double out;
+  double y = 0;
   for (int i = 0; i < n; ++i) {
-    out += pow(x[i] - x0, 2.0);
+    y += pow(x[i] - x0, 2.0);
   }
-  return sqrt(out / n);
+  return sqrt(y / n);
 }
 
 [[cpp11::register]] doubles cumsum_cpp_(doubles x) {
@@ -89,20 +90,20 @@ namespace writable = cpp11::writable;
   return false;
 }
 
-[[cpp11::register]] doubles which_cpp_(function pred, doubles x) {
+[[cpp11::register]] integers which_cpp_(logicals x) {
   int n = x.size();
-  writable::doubles res;
+  writable::integers res;
   int j = 0;
 
   for (int i = 0; i < n; ++i) {
-    if (pred(x[i])) {
+    if (x[i]) {
       ++j;
       res.push_back(i + 1);
     }
   }
 
   if (j == 0) {
-    return doubles(0);
+    return integers(0);
   } else {
     return res;
   }
@@ -482,4 +483,43 @@ namespace writable = cpp11::writable;
   }
 
   return out;
+}
+
+// Non-ISO: Use a variable length array
+[[cpp11::register]] double squared_sum_non_iso_(integers inp) {
+  int size = inp.size();
+  double array[size];  // will give a warning, but still compile
+
+  for (int i = 0; i < size; ++i) {
+    array[i] = inp[i] * inp[i];
+  }
+
+  return std::accumulate(array, array + size, 0.0);
+}
+
+// ISO: Use a vector
+[[cpp11::register]] double squared_sum_iso_(integers inp) {
+  int size = inp.size();
+  std::vector<double> vec(size);
+
+  for (int i = 0; i < size; ++i) {
+    vec[i] = inp[i] * inp[i];
+  }
+
+  return std::accumulate(vec.begin(), vec.end(), 0.0);
+}
+
+[[cpp11::register]] integers square_coordinates_(integers x) {
+  writable::integers out = x;
+  for (int i = 0; i < x.size(); ++i) {
+    out[i] = x[i] * x[i];
+  }
+  return out;
+}
+
+[[cpp11::register]] integers square_coordinates2_(writable::integers x) {
+  for (int i = 0; i < x.size(); ++i) {
+    x[i] = x[i] * x[i];
+  }
+  return x;
 }
